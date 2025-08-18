@@ -1,0 +1,13 @@
+{{ define "main" }}
+<div>
+    <h1>{{ .Title }}</h1>
+
+    <div class="articles-grid">
+        {{ range .Pages }}
+        {{ if not .Draft }}
+        {{ partial "article-card.html" . }}
+        {{ end }}
+        {{ end }}
+    </div>
+</div>
+{{ end }}
