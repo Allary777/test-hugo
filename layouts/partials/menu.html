@@ -1,0 +1,34 @@
+<header class="site-header">
+    <div class="site-header__container">
+        <!-- Logo -->
+        <div class="site-header__logo">
+            <a class="site-header__logo-link" href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
+        </div>
+
+        <!-- Burger checkbox -->
+        <input type="checkbox" id="burger-toggle" class="site-header__burger-checkbox">
+
+        <!-- Burger label -->
+        <label for="burger-toggle" class="site-header__burger">
+            <span class="site-header__burger-line site-header__burger-line--top"></span>
+            <span class="site-header__burger-line site-header__burger-line--middle"></span>
+            <span class="site-header__burger-line site-header__burger-line--bottom"></span>
+        </label>
+
+        <!-- Nav -->
+        <nav class="site-header__nav">
+            <ul class="site-header__nav-list">
+                {{ range .Site.Menus.main }}
+                <li class="site-header__nav-item">
+                    <a href="{{ .URL }}" class="site-header__nav-link">
+                        {{ .Name }}
+                    </a>
+                </li>
+                {{ end }}
+            </ul>
+        </nav>
+
+        <!-- Overlay -->
+        <label for="burger-toggle" class="site-header__overlay"></label>
+    </div>
+</header>

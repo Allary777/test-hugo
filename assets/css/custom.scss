@@ -1,0 +1,221 @@
+// Импорт компонентов
+@import 'components/menu';
+
+// Переменные SCSS
+$primary-color: #0066cc;
+$secondary-color: #f8f9fa;
+$text-color: #333;
+$text-light: #666;
+$text-muted: #999;
+$border-radius: 8px;
+$box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+$transition: 0.3s ease;
+
+.container{
+  max-width: 1200px;
+  padding: 0 20px;
+  margin: auto;
+}
+img{
+  width: 100%;
+  height: auto;
+}
+@mixin card-hover {
+  transition: transform $transition;
+  &:hover {
+    transform: translateY(-5px);
+  }
+}
+
+@mixin responsive-grid($min-width: 300px) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax($min-width, 1fr));
+  gap: 2rem;
+}
+
+// Компонент карточки статьи
+.article-card {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+  overflow: hidden;
+  height: 100%;
+  @include card-hover;
+
+  &__image {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__content {
+    padding: 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__title {
+    margin: 0 0 1rem 0;
+    font-size: 1.25rem;
+    line-height: 1.4;
+
+    a {
+      text-decoration: none;
+      color: $text-color;
+
+      &:hover {
+        color: $primary-color;
+      }
+    }
+  }
+
+  &__description {
+    flex: 1;
+    color: $text-light;
+    line-height: 1.6;
+    margin: 0 0 1rem 0;
+  }
+
+  &__meta {
+    color: $text-muted;
+    font-size: 0.9rem;
+  }
+}
+
+// Сетка статей
+.articles-grid {
+  @include responsive-grid(300px);
+  margin: 2rem 0;
+}
+
+// Компонент отзывов
+.testimonials {
+  padding: 4rem 0;
+  background: $secondary-color;
+
+  &__title {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 2rem;
+    color: $text-color;
+  }
+
+  &__grid {
+    @include responsive-grid(300px);
+  }
+}
+
+.testimonial {
+  background: #fff;
+  padding: 2rem;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+  @include card-hover;
+
+  &__text {
+    font-style: italic;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin: 0 0 1.5rem 0;
+    color: $text-color;
+  }
+
+  &__author {
+    display: flex;
+    align-items: center;
+  }
+
+  &__name {
+    margin: 0 0 0.25rem 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: $text-color;
+  }
+
+  &__position {
+    margin: 0;
+    color: $text-light;
+    font-size: 0.9rem;
+  }
+}
+
+// Страница "О компании"
+.about-hero {
+  background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4));
+  color: white;
+  padding: 6rem 0;
+  text-align: center;
+
+  &__title {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  &__description {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+}
+
+.about-info {
+  padding: 4rem 0;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  &__image {
+    img {
+      width: 100%;
+      border-radius: $border-radius;
+    }
+  }
+
+  &__content {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: $text-color;
+  }
+}
+
+// Адаптивность
+@media (max-width: 768px) {
+  .articles-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .article-card__content {
+    padding: 1rem;
+  }
+
+  .testimonials__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .testimonial {
+    padding: 1.5rem;
+  }
+
+  .about-hero__title {
+    font-size: 2rem;
+  }
+
+  .about-info__grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}

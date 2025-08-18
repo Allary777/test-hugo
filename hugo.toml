@@ -1,3 +1,26 @@
 baseURL = 'https://example.org/'
 languageCode = 'en-us'
-title = 'My New Hugo Site'
+title = 'Сайт компании'
+
+[menu]
+  [[menu.main]]
+    name = "Главная"
+    url = "/"
+    weight = 1
+
+  [[menu.main]]
+    name = "Статьи"
+    url = "/posts/"
+    weight = 2
+
+  [[menu.main]]
+    name = "О компании"
+    url = "/about/"
+    weight = 3
+
+[params]
+featured_image = '/images/posts.webp'
+
+favicon = '/images/favicon.svg'
+
+

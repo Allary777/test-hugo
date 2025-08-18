@@ -1,0 +1,17 @@
+{{ define "main" }}
+<article>
+    <div>
+        <h1>{{ .Title }}</h1>
+
+        {{ if .Params.featured_image }}
+        <img class="" src="{{ .Params.featured_image | relURL }}" alt="{{ .Title }}">
+        {{ end }}
+
+        <p>{{ .Date.Format "02.01.2006" }}</p>
+
+        <div>
+            {{ .Content }}
+        </div>
+    </div>
+</article>
+{{ end }}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode | default " en" }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
+
+    <!-- Favicon -->
+    {{ with .Site.Params.favicon }}
+    <link rel="icon" type="image/svg+xml" href="{{ . | relURL }}">
+    {{ end }}
+
+    <!-- scss -->
+    {{ $scss := resources.Get "css/custom.scss" }}
+    {{ if $scss }}
+    {{ $style := $scss | css.Sass | resources.Minify }}
+    <link rel="stylesheet" href="{{ $style.Permalink }}">
+    {{ end }}
+</head>
+
+<body>
+
+<!-- Header -->
+{{ partial "menu.html" . }}
+<div class="container">
+
+
+
+    <!-- Main content -->
+    <main>
+        {{ block "main" . }}{{ end }}
+    </main>
+
+    <!-- Footer -->
+    {{ partial "footer.html" . }}
+
+</div>
+</body>
+</html>

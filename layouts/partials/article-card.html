@@ -1,0 +1,27 @@
+<div class="article-card">
+    <div class="article-card__image">
+        {{ $image := .Params.featured_image | default .Site.Params.featured_image }}
+        {{ if $image }}
+        <img src="{{ $image | relURL }}" alt="{{ .Title }}" loading="lazy">
+        {{ end }}
+    </div>
+
+    <div class="article-card__content">
+        <h3 class="article-card__title">
+            <a href="{{ .Permalink }}">{{ .Title }}</a>
+        </h3>
+        <p class="article-card__description">
+            {{ $description := .Params.description | default .Site.Params.description }}
+            {{ if $description }}
+            {{ $description }}
+            {{ else }}
+            {{ .Summary | truncate 120 }}
+            {{ end }}
+        </p>
+
+        <div class="article-card__meta">
+            <span class="article-card__date">{{ .Date.Format "02.01.2006" }}</span>
+        </div>
+    </div>
+</div>
+

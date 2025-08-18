@@ -1,0 +1,11 @@
+<section class="testimonials">
+    <div class="container">
+        <h2 class="testimonials__title">{{ .title | default "Отзывы клиентов" }}</h2>
+
+        <div class="testimonials__grid">
+            {{ range .testimonials }}
+            {{ partial "testimonial.html" . }}
+            {{ end }}
+        </div>
+    </div>
+</section>
